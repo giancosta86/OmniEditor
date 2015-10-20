@@ -41,7 +41,7 @@ apply plugin: 'info.gianlucacosta.aurora'
 
 group 'info.gianlucacosta.omnieditor'
 archivesBaseName = 'omnieditor'
-version '1.0'
+version '1.2'
 
 
 description = 'Ready-made JavaFX IDE for custom languages'

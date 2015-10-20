@@ -20,6 +20,7 @@
 
 package info.gianlucacosta.omnieditor;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -55,7 +56,6 @@ public class OmniEditor {
             throw new RuntimeException(ex);
         }
 
-
         Scene scene = new Scene(root);
 
 
@@ -65,12 +65,14 @@ public class OmniEditor {
 
         URL syntaxCssUrl = appStrategy.getSyntaxCss();
         scene.getStylesheets().add(syntaxCssUrl.toExternalForm());
-        primaryStage.setScene(scene);
 
-        Pair<Double, Double> initialSize = appStrategy.getInitialMainWindowSize();
 
-        primaryStage.setWidth(initialSize.getKey());
-        primaryStage.setHeight(initialSize.getValue());
-        primaryStage.show();
+        Platform.runLater(() -> {
+            primaryStage.setScene(scene);
+            Pair<Double, Double> initialSize = appStrategy.getInitialMainWindowSize();
+            primaryStage.setWidth(initialSize.getKey());
+            primaryStage.setHeight(initialSize.getValue());
+            primaryStage.show();
+        });
     }
 }
