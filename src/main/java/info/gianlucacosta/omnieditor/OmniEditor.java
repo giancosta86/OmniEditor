@@ -69,9 +69,6 @@ public class OmniEditor {
 
         Platform.runLater(() -> {
             primaryStage.setScene(scene);
-            Pair<Double, Double> initialSize = appStrategy.getInitialMainWindowSize();
-            primaryStage.setWidth(initialSize.getKey());
-            primaryStage.setHeight(initialSize.getValue());
             primaryStage.show();
         });
     }

@@ -39,13 +39,6 @@ public interface AppStrategy {
 
 
     /**
-     * Returns the initial size for the main window in the editor.
-     *
-     * @return a pair (width, height)
-     */
-    Pair<Double, Double> getInitialMainWindowSize();
-
-    /**
      * Creates the file chooser employed when opening and saving source files.
      *
      * @return The file chooser
