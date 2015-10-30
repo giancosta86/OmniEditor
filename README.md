@@ -55,6 +55,8 @@ For further information about downloading or referencing OmniEditor via Gradle o
 
 The very first open source application employing OmniEditor is [Chronos IDE](https://github.com/giancosta86/Chronos-IDE), for the [Chronos programming language](https://github.com/giancosta86/Chronos).
 
+![Chronos IDE - Screenshot](https://github.com/giancosta86/Chronos-IDE/blob/master/Screenshot.png)
+
 ## Special thanks
 
 * OmniEditor employs [RichTextFX](https://github.com/TomasMikula/RichTextFX), and was created starting from its brilliant "JavaKeywords" demo
