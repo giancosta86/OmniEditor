@@ -56,15 +56,14 @@ public class OmniEditor {
             throw new RuntimeException(ex);
         }
 
-        Scene scene = new Scene(root);
-
+        URL syntaxCssUrl = appStrategy.getSyntaxCss();
 
         MainWindowController mainWindowController = loader.getController();
-        mainWindowController.init(primaryStage, appStrategy);
 
-
-        URL syntaxCssUrl = appStrategy.getSyntaxCss();
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(syntaxCssUrl.toExternalForm());
+
+        mainWindowController.init(primaryStage, appStrategy);
 
 
         Platform.runLater(() -> {

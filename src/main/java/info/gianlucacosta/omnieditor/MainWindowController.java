@@ -254,6 +254,9 @@ public class MainWindowController {
         settingsMenuItem.setVisible(appStrategy.isShowSettings());
         settingsMenuItem.disableProperty().bind(running);
 
+        onlineReferenceMenuItem.disableProperty().bind(running);
+        bindButton(onlineReferenceButton, onlineReferenceMenuItem);
+
         aboutMenuItem.disableProperty().bind(running);
         bindButton(aboutButton, aboutMenuItem);
     }
@@ -529,6 +532,10 @@ public class MainWindowController {
         appStrategy.showSettings();
     }
 
+    public void showOnlineReference() {
+        appStrategy.showOnlineReference();
+    }
+
 
     public void showAboutWindow() {
         appStrategy.showAboutWindow();
@@ -579,6 +586,9 @@ public class MainWindowController {
     private MenuItem settingsMenuItem;
 
     @FXML
+    private MenuItem onlineReferenceMenuItem;
+
+    @FXML
     private MenuItem aboutMenuItem;
 
 
@@ -617,6 +627,9 @@ public class MainWindowController {
     @FXML
     private Button stopButton;
 
+
+    @FXML
+    private Button onlineReferenceButton;
 
     @FXML
     private Button aboutButton;

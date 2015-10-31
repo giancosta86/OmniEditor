@@ -96,6 +96,12 @@ public interface AppStrategy {
      */
     URL getSyntaxCss();
 
+
+    /*
+     * Shows online reference (for example, opens a web page)
+     */
+    void showOnlineReference();
+
     /**
      * Shows the "About..." window
      */
