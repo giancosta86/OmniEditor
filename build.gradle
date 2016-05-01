@@ -28,20 +28,24 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
-        classpath 'info.gianlucacosta.aurora:aurora:2.1'
-        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:3.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:4.0'
+        classpath 'info.gianlucacosta.aurora:aurora:4.0'
     }
 }
 
 
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'osgi'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'info.gianlucacosta.moonlicense'
 apply plugin: 'info.gianlucacosta.aurora'
 
 
 group 'info.gianlucacosta.omnieditor'
 archivesBaseName = 'omnieditor'
-version '2.1'
+version '2.2'
 
 
 description = 'Ready-made JavaFX IDE for custom languages'
@@ -59,7 +63,6 @@ dependencies {
 
 
 aurora {
-    docTask = 'javadoc'
     gitHubUser = 'giancosta86'
 
     author {
@@ -69,8 +72,6 @@ aurora {
     }
 
     bintray {
-        user = project.bintrayUser
-        key = project.bintrayKey
         repo = 'Hephaestus'
         licenses = ['Apache-2.0']
         labels = [
