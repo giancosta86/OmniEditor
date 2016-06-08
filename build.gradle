@@ -29,13 +29,13 @@ buildscript {
 
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
-        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:4.2'
-        classpath 'info.gianlucacosta.aurora:aurora:5.4'
+        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:4.3'
+        classpath 'info.gianlucacosta.aurora:aurora:6.0'
     }
 }
 
 
-apply plugin: 'java'
+apply plugin: 'scala'
 apply plugin: 'maven'
 apply plugin: 'osgi'
 apply plugin: 'com.jfrog.bintray'
@@ -45,17 +45,21 @@ apply plugin: 'info.gianlucacosta.aurora'
 
 group 'info.gianlucacosta.omnieditor'
 archivesBaseName = 'omnieditor'
-version '2.3'
+version '3.0'
 
 
-description = 'Ready-made JavaFX IDE for custom languages'
-
-sourceCompatibility = 1.8
+description = 'Ready-made ScalaFX IDE for custom languages'
 
 
 
 dependencies {
-    compile 'org.fxmisc.richtext:richtextfx:0.6.5'
+    generatedCompile 'org.scala-lang:scala-library:2.11.8'
+
+    compile 'org.scala-lang:scala-library:2.11.8'
+
+    compile 'org.fxmisc.richtext:richtextfx:0.6.10'
+
+    compile 'info.gianlucacosta.helios:helios-core:2.5'
 }
 
 
@@ -78,8 +82,9 @@ aurora {
           'IDE',
           'code editor',
           'syntax highlighting',
-          'JavaFX',
+          'ScalaFX',
           'library',
+          'Scala',
           'Java'
         ]
     }

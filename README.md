@@ -1,33 +1,47 @@
 # OmniEditor
 
-*Ready-made JavaFX IDE for custom languages*
+*Ready-made ScalaFX IDE for custom languages*
 
 ## Introduction
 
-OmniEditor is a small JavaFX library providing a ready-made, user-friendly IDE for custom programming languages.
+OmniEditor is a ScalaFX library providing a ready-made, user-friendly IDE for custom programming languages as well as an independent JavaFX editor with syntax highlighting.
 
-In addition to the basic document lifecycle activities (*new / open / save / save as / undo / redo / cut / copy / paste*), OmniEditor supports the execution of interpreters/compilers on the code written in the text editor: such a task can also be canceled by the user via the *Stop* button in the user interface (for example, in case of infinite loops).
+First of all, it supports the basic interactive activities provided by a document workspace:
+
+ * New
+ * Open
+ * Save
+ * Save as
+ * Undo
+ * Redo
+ * Cut
+ * Copy
+ * Paste
+ * Settings
+ * Help
+ * About
+
+In addition to this, OmniEditor enables *the execution of interpreters/compilers* on the code written in the text editor, allowing the user to cancel the process via the *Stop* button in the user interface (for example, in case of infinite loops).
+
+Finally, for Java/JavaFX development (without Scala), the 2.x series is still available on Hephaestus, its Gradle/Maven repository.
 
 
 ## Core classes
 
 ### OmniEditor
 
-The *OmniEditor* class provides a customizable IDE application packaged as a Java class.
+The *OmniEditor* class provides a customizable IDE application packaged as a Scala class.
 
-To run it, just add a few lines to the *start* method of your JavaFX *Application* subclass:
+To run it, just add a few lines to the *start* method of your JavaFX/ScalaFX application subclass:
 
-```java
-@Override
-public void start(Stage primaryStage) {
-  OmniEditor omniEditor = new OmniEditor(appStrategy);
-  omniEditor.start(primaryStage);
-}
+```scala
+val omniEditor = new OmniEditor(appStrategy)
+omniEditor.start(primaryStage)
 ```
 
-where *appStrategy* is an instance of a class implementing the *AppStrategy* interface defined by the library, and *primaryStage* is the parameter of the *start* method.
+where *appStrategy* is an instance of a class implementing the *AppStrategy* interface defined by the library, and *primaryStage* is the parameter of the *start* method in your JavaFX/ScalaFX application.
 
-For detailed information, please refer to the Javadoc documentation.
+For further information, please refer to the Scaladoc documentation.
 
 
 ### StyledCodeEditor
@@ -37,19 +51,30 @@ Stemming from the "JavaKeywords" example provided by [RichTextFX](https://github
 In particular:
 
 * you can define a chain of *regex patterns*, each describing which CSS class should be applied to its matching text
+
 * a shortcut method is defined to apply a CSS class to a set of tokens (especially keywords)
-* it supports *smart new lines*, to keep each new line aligned with the previous one whenever the user presses ENTER
+
+* it supports *indented new lines*, to keep each new line aligned with the previous one whenever the user presses ENTER
+
 * it supports *dynamic tabs* - the insertion of a given number of space characters in lieu of \\t whenever the user presses TAB.
+
+
+Please, refer to its Scaladoc for more details.
 
 
 ## Requirements
 
-OmniEditor requires Java 8 Update 51 or later compatible version.
+OmniEditor requires:
+
+* Java 8 Update 91 or later compatible
+
+* Scala 2.11.8 or later compatible
 
 
 ## Download
 
-For further information about downloading or referencing OmniEditor via Gradle or Maven, please visit [its page](https://bintray.com/giancosta86/Hephaestus/OmniEditor) on Hephaestus, my Gradle repository.
+For further information about downloading or referencing OmniEditor via Gradle or Maven, please visit [its page](https://bintray.com/giancosta86/Hephaestus/OmniEditor) on Hephaestus, its Gradle/Maven repository.
+
 
 ## OmniEditor in action
 
@@ -59,7 +84,10 @@ The very first open source application employing OmniEditor is [Chronos IDE](htt
 
 ## Special thanks
 
-* OmniEditor employs [RichTextFX](https://github.com/TomasMikula/RichTextFX), and was created starting from its brilliant "JavaKeywords" demo
+* OmniEditor is based on [RichTextFX](https://github.com/TomasMikula/RichTextFX), and was created starting from its brilliant "JavaKeywords" demo
+
+
+* OmniEditor also employs [Helios](https://github.com/giancosta86/Helios-core), an open source Scala library of shared utilities
 
 * The UI icons are taken from the elegant [Kids Icons](http://www.iconarchive.com/show/kids-icons-icons-by-everaldo.1.html) set, by [Everaldo Coelho](http://www.everaldo.com/).
 
