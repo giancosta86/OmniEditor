@@ -4,7 +4,7 @@
 
 ## Introduction
 
-OmniEditor is a ScalaFX library providing a ready-made, user-friendly IDE for custom programming languages as well as an independent JavaFX editor with syntax highlighting.
+OmniEditor is a ScalaFX library providing a ready-made, user-friendly IDE for custom programming languages as well as an independent code editor with syntax highlighting.
 
 First of all, it supports the basic interactive activities provided by a document workspace:
 
