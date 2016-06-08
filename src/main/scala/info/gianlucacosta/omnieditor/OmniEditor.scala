@@ -20,11 +20,12 @@
 
 package info.gianlucacosta.omnieditor
 
-import scalafx.application.Platform
 import javafx.fxml.FXMLLoader
-import javafx.scene.layout.BorderPane
 import javafx.scene.Scene
+import javafx.scene.layout.BorderPane
 import javafx.stage.Stage
+
+import scalafx.application.Platform
 
 case class OmniEditor(appStrategy: AppStrategy) {
   def start(primaryStage: Stage) {

@@ -30,7 +30,7 @@ private case class OutputThread(
                                  refreshRate: Duration,
                                  outputBuffer: AtomicStringBuilder,
                                  outputAction: String => Unit
-                       ) extends Thread {
+                               ) extends Thread {
 
   override def run(): Unit = {
     while (!Thread.interrupted) {

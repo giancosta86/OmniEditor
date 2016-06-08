@@ -21,8 +21,6 @@
 package info.gianlucacosta.omnieditor
 
 import java.io.File
-import java.nio.charset
-import java.nio.charset.Charset
 import java.nio.file.Files
 import javafx.stage.Stage
 

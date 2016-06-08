@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="info.gianlucacosta.omnieditor.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0"
+            prefWidth="851.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="info.gianlucacosta.omnieditor.MainWindowController">
     <center>
-        <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="507.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+        <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="507.0" prefWidth="738.0"
+                   BorderPane.alignment="CENTER">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <BorderPane fx:id="editorPane" layoutX="144.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <BorderPane fx:id="editorPane" layoutX="144.0" layoutY="14.0" prefHeight="200.0"
+                                    prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <TextArea fx:id="outputArea" layoutX="79.0" layoutY="-2.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea fx:id="outputArea" layoutX="79.0" layoutY="-2.0" prefHeight="200.0" prefWidth="200.0"
+                                  wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </children>
                 </AnchorPane>
             </items>
@@ -29,91 +34,114 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#newDocument" text="New">
+                                <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#newDocument"
+                                          text="New">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openDocument" text="Open...">
+                                <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openDocument"
+                                          text="Open...">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveDocument" text="Save">
+                                <SeparatorMenuItem mnemonicParsing="false"/>
+                                <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveDocument"
+                                          text="Save">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAsDocument" text="Save as...">
+                                <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAsDocument"
+                                          text="Save as...">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
+                                <SeparatorMenuItem mnemonicParsing="false"/>
+                                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exitProgram"
+                                          text="Exit"/>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" onAction="#undo" onMenuValidation="#redo" text="Undo">
+                                <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" onAction="#undo"
+                                          onMenuValidation="#redo" text="Undo">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <MenuItem fx:id="redoMenuItem" mnemonicParsing="false" onAction="#redo" text="Redo" />
-                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="redoMenuItem" mnemonicParsing="false" onAction="#redo" text="Redo"/>
+                                <SeparatorMenuItem mnemonicParsing="false"/>
                                 <MenuItem fx:id="cutMenuItem" mnemonicParsing="false" onAction="#cut" text="Cut">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
                                 <MenuItem fx:id="copyMenuItem" mnemonicParsing="false" onAction="#copy" text="Copy">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
                                 <MenuItem fx:id="pasteMenuItem" mnemonicParsing="false" onAction="#paste" text="Paste">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <SeparatorMenuItem mnemonicParsing="false"/>
                                 <MenuItem mnemonicParsing="false" onAction="#selectAll" text="Select all">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                        <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP"
+                                                            shortcut="UP"/>
                                     </accelerator>
                                 </MenuItem>
-                                <SeparatorMenuItem mnemonicParsing="false" />
-                                <MenuItem fx:id="saveOutputMenuItem" mnemonicParsing="false" onAction="#saveOutput" text="Save output..." />
-                                <MenuItem fx:id="settingsMenuItem" mnemonicParsing="false" onAction="#showSettings" text="Settings..." />
+                                <SeparatorMenuItem mnemonicParsing="false"/>
+                                <MenuItem fx:id="saveOutputMenuItem" mnemonicParsing="false" onAction="#saveOutput"
+                                          text="Save output..."/>
+                                <MenuItem fx:id="settingsMenuItem" mnemonicParsing="false" onAction="#showSettings"
+                                          text="Settings..."/>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Run">
                             <items>
                                 <MenuItem fx:id="startMenuItem" mnemonicParsing="false" onAction="#start" text="Start">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="F5" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                                        <KeyCodeCombination alt="UP" code="F5" control="UP" meta="UP" shift="UP"
+                                                            shortcut="ANY"/>
                                     </accelerator>
                                 </MenuItem>
                                 <MenuItem fx:id="stopMenuItem" mnemonicParsing="false" onAction="#stop" text="Stop">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="F4" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                                        <KeyCodeCombination alt="UP" code="F4" control="UP" meta="UP" shift="UP"
+                                                            shortcut="ANY"/>
                                     </accelerator>
                                 </MenuItem>
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="?">
                             <items>
-                        <MenuItem fx:id="onlineReferenceMenuItem" mnemonicParsing="false" onAction="#showOnlineReference" text="Online reference">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                            </accelerator>
+                                <MenuItem fx:id="onlineReferenceMenuItem" mnemonicParsing="false"
+                                          onAction="#showOnlineReference" text="Online reference">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP"
+                                                            shortcut="ANY"/>
+                                    </accelerator>
                                 </MenuItem>
 
-                                <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#showAboutWindow" text="About...">
+                                <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#showAboutWindow"
+                                          text="About...">
                                     <accelerator>
-                                        <KeyCodeCombination alt="UP" code="F12" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                                        <KeyCodeCombination alt="UP" code="F12" control="UP" meta="UP" shift="UP"
+                                                            shortcut="ANY"/>
                                     </accelerator>
                                 </MenuItem>
                             </items>
@@ -122,23 +150,23 @@
                 </MenuBar>
                 <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                        <Button fx:id="newButton" mnemonicParsing="false" />
-                        <Button fx:id="openButton" mnemonicParsing="false" />
-                        <Button fx:id="saveButton" mnemonicParsing="false" />
-                        <Button fx:id="saveAsButton" mnemonicParsing="false" />
-                        <Separator layoutX="168.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0" />
-                        <Button fx:id="undoButton" mnemonicParsing="false" />
-                        <Button fx:id="redoButton" mnemonicParsing="false" />
-                        <Separator layoutX="271.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0" />
-                        <Button fx:id="cutButton" mnemonicParsing="false" />
-                        <Button fx:id="copyButton" mnemonicParsing="false" />
-                        <Button fx:id="pasteButton" mnemonicParsing="false" />
-                        <Separator orientation="VERTICAL" prefHeight="40.0" />
-                        <Button fx:id="startButton" mnemonicParsing="false" />
-                        <Button fx:id="stopButton" mnemonicParsing="false" />
-                        <Separator layoutX="439.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0" />
-                  <Button fx:id="onlineReferenceButton" mnemonicParsing="false" />
-                        <Button fx:id="aboutButton" mnemonicParsing="false" />
+                        <Button fx:id="newButton" mnemonicParsing="false"/>
+                        <Button fx:id="openButton" mnemonicParsing="false"/>
+                        <Button fx:id="saveButton" mnemonicParsing="false"/>
+                        <Button fx:id="saveAsButton" mnemonicParsing="false"/>
+                        <Separator layoutX="168.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0"/>
+                        <Button fx:id="undoButton" mnemonicParsing="false"/>
+                        <Button fx:id="redoButton" mnemonicParsing="false"/>
+                        <Separator layoutX="271.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0"/>
+                        <Button fx:id="cutButton" mnemonicParsing="false"/>
+                        <Button fx:id="copyButton" mnemonicParsing="false"/>
+                        <Button fx:id="pasteButton" mnemonicParsing="false"/>
+                        <Separator orientation="VERTICAL" prefHeight="40.0"/>
+                        <Button fx:id="startButton" mnemonicParsing="false"/>
+                        <Button fx:id="stopButton" mnemonicParsing="false"/>
+                        <Separator layoutX="439.0" layoutY="10.0" orientation="VERTICAL" prefHeight="40.0"/>
+                        <Button fx:id="onlineReferenceButton" mnemonicParsing="false"/>
+                        <Button fx:id="aboutButton" mnemonicParsing="false"/>
                     </items>
                 </ToolBar>
             </children>

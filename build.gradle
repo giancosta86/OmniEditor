@@ -77,15 +77,15 @@ aurora {
         repo = 'Hephaestus'
         licenses = ['Apache-2.0']
         labels = [
-          'custom languages',
-          'ready-made',
-          'IDE',
-          'code editor',
-          'syntax highlighting',
-          'ScalaFX',
-          'library',
-          'Scala',
-          'Java'
+                'custom languages',
+                'ready-made',
+                'IDE',
+                'code editor',
+                'syntax highlighting',
+                'ScalaFX',
+                'library',
+                'Scala',
+                'Java'
         ]
     }
 }

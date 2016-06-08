@@ -23,13 +23,12 @@ package info.gianlucacosta.omnieditor
 import java.util
 import java.util.regex.Pattern
 import javafx.beans.Observable
-import javafx.beans.value.{ChangeListener, ObservableValue}
 import javafx.event.EventHandler
 import javafx.scene.input.{KeyCode, KeyEvent}
 
-import scala.collection.JavaConversions._
 import org.fxmisc.richtext.{CodeArea, LineNumberFactory, StyleSpans, StyleSpansBuilder}
 
+import scala.collection.JavaConversions._
 import scalafx.Includes._
 
 
@@ -53,7 +52,7 @@ class StyledCodeEditor extends CodeArea {
   setParagraphGraphicFactory(LineNumberFactory.get(this))
 
   textProperty().addListener((observable: Observable) => {
-      setStyleSpans(0, computeHighlighting(getText))
+    setStyleSpans(0, computeHighlighting(getText))
   })
 
 
@@ -98,7 +97,7 @@ class StyledCodeEditor extends CodeArea {
     val patternBuilder = new StringBuilder()
 
     styles.foreach { case (key, style) =>
-        patternBuilder.append(s"(?<${key}>${style.pattern})|")
+      patternBuilder.append(s"(?<${key}>${style.pattern})|")
     }
 
     if (patternBuilder.nonEmpty) {
@@ -118,9 +117,9 @@ class StyledCodeEditor extends CodeArea {
     while (matcher.find()) {
       val styleKey =
         styles
-        .keySet
-        .filter(key => matcher.group(key) != null)
-        .head
+          .keySet
+          .filter(key => matcher.group(key) != null)
+          .head
 
       val styleClass = styles(styleKey).cssClass
 
@@ -187,7 +186,7 @@ class StyledCodeEditor extends CodeArea {
 
     tabReplacementString = Some(" " * spaceCharacterCount)
 
-    addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler[KeyEvent]{
+    addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler[KeyEvent] {
       override def handle(keyEvent: KeyEvent): Unit = {
         keyEvent.getCode match {
           case KeyCode.TAB =>

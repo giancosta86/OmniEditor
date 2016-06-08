@@ -22,25 +22,21 @@ package info.gianlucacosta.omnieditor
 
 import java.nio.file.Files
 import java.time.Duration
+import javafx.beans.Observable
+import javafx.beans.property.SimpleBooleanProperty
 import javafx.fxml.FXML
 import javafx.scene.control.{Button, MenuItem}
 import javafx.stage.Stage
 
+import info.gianlucacosta.helios.concurrency.AtomicStringBuilder
 import info.gianlucacosta.helios.fx.dialogs.Alerts
-
-import scalafx.scene.control.Tooltip
-import scalafx.scene.image.{Image, ImageView}
-import scalafx.stage.FileChooser
 import info.gianlucacosta.helios.fx.dialogs.FileChooserExtensions._
 
 import scalafx.Includes._
-import javafx.beans.Observable
-import javafx.beans.property.SimpleBooleanProperty
-
-import info.gianlucacosta.helios.concurrency.AtomicStringBuilder
-
 import scalafx.beans.binding.Bindings
-
+import scalafx.scene.control.Tooltip
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.stage.FileChooser
 
 
 object MainWindowController {
@@ -73,7 +69,6 @@ class MainWindowController {
   private var sourceFileChooser: FileChooser = _
 
   private var outputFileChooser: FileChooser = _
-
 
 
   /*
@@ -183,7 +178,7 @@ class MainWindowController {
       )
 
 
-    cutMenuItem.disableProperty <==  noSelectedCodeText || runningProperty
+    cutMenuItem.disableProperty <== noSelectedCodeText || runningProperty
     bindButton(cutButton, cutMenuItem)
 
     copyMenuItem.disableProperty <== noSelectedCodeText || runningProperty
@@ -335,23 +330,23 @@ class MainWindowController {
       start()
 
       override def run(): Unit = {
-          try {
-            appStrategy.run(codeEditor.getText(), outputBuffer)
-          } catch  {
-            case ex: InterruptedException =>
-            //Just do nothing
-          }
+        try {
+          appStrategy.run(codeEditor.getText(), outputBuffer)
+        } catch {
+          case ex: InterruptedException =>
+          //Just do nothing
+        }
 
 
-          outputThread.interrupt()
-          try {
-            outputThread.join()
-          } catch  {
-            case ex: InterruptedException =>
-            //Just do nothing
-          }
+        outputThread.interrupt()
+        try {
+          outputThread.join()
+        } catch {
+          case ex: InterruptedException =>
+          //Just do nothing
+        }
 
-          running = false
+        running = false
       }
     }
   }
@@ -380,7 +375,7 @@ class MainWindowController {
   var editorPane: javafx.scene.layout.BorderPane = _
 
   @FXML
-  var  newMenuItem: javafx.scene.control.MenuItem = _
+  var newMenuItem: javafx.scene.control.MenuItem = _
 
   @FXML
   var openMenuItem: javafx.scene.control.MenuItem = _
