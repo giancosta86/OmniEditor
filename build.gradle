@@ -45,7 +45,7 @@ apply plugin: 'info.gianlucacosta.aurora'
 
 group 'info.gianlucacosta.omnieditor'
 archivesBaseName = 'omnieditor'
-version '4.0-SNAPSHOT'
+version '4.0'
 
 
 description = 'Ready-made ScalaFX IDE for custom languages'
