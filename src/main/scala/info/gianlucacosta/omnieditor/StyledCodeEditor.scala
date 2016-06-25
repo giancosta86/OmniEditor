@@ -36,7 +36,7 @@ import scalafx.application.Platform
 
 
 object StyledCodeEditor {
-  private val leadingSpacePattern = Pattern.compile(raw"^\s*")
+  private val LeadingSpacePattern = Pattern.compile(raw"^\s*")
 }
 
 /**
@@ -129,7 +129,7 @@ class StyledCodeEditor(stylingSleepDuration: Duration = Duration.ofMillis(334)) 
 
             val currentLine = previousText.substring(previousNewlineCharPosition + 1)
 
-            val leadingSpaceMatcher = StyledCodeEditor.leadingSpacePattern.matcher(currentLine)
+            val leadingSpaceMatcher = StyledCodeEditor.LeadingSpacePattern.matcher(currentLine)
 
             if (leadingSpaceMatcher.find()) {
               val leadingSpace = leadingSpaceMatcher.group
