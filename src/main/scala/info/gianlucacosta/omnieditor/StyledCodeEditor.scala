@@ -24,14 +24,12 @@ import java.time.Duration
 import java.util
 import java.util.concurrent.Semaphore
 import java.util.regex.Pattern
-import javafx.beans.Observable
 import javafx.event.EventHandler
 import javafx.scene.input.{KeyCode, KeyEvent}
 
 import org.fxmisc.richtext.{CodeArea, LineNumberFactory, StyleSpans, StyleSpansBuilder}
 
 import scala.collection.JavaConversions._
-import scalafx.Includes._
 import scalafx.application.Platform
 
 
@@ -55,7 +53,7 @@ class StyledCodeEditor(stylingSleepDuration: Duration = Duration.ofMillis(334)) 
   setParagraphGraphicFactory(LineNumberFactory.get(this))
 
 
-  private val styleDaemon = new StyleDaemon(this, stylingSleepDuration) {
+  new StyleDaemon(this, stylingSleepDuration) {
     start()
   }
 
@@ -265,5 +263,4 @@ class StyledCodeEditor(stylingSleepDuration: Duration = Duration.ofMillis(334)) 
       spansBuilder.create()
     }
   }
-
 }
