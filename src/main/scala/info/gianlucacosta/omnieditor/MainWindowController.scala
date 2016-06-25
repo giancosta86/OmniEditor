@@ -91,6 +91,7 @@ class MainWindowController {
     }
 
     workspace = new OmniWorkspace(stage, sourceFileChooser, codeEditor)
+    workspace.bindEvents()
 
     editorPane.setCenter(codeEditor)
 

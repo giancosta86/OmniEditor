@@ -45,7 +45,7 @@ apply plugin: 'info.gianlucacosta.aurora'
 
 group 'info.gianlucacosta.omnieditor'
 archivesBaseName = 'omnieditor'
-version '3.0'
+version '4.0-SNAPSHOT'
 
 
 description = 'Ready-made ScalaFX IDE for custom languages'
@@ -59,7 +59,7 @@ dependencies {
 
     compile 'org.fxmisc.richtext:richtextfx:0.6.10'
 
-    compile 'info.gianlucacosta.helios:helios-core:2.5'
+    compile 'info.gianlucacosta.helios:helios-core:3.0'
 }
 
 
