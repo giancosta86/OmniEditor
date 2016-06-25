@@ -20,7 +20,9 @@
 
 package info.gianlucacosta.omnieditor
 
+import java.time.Duration
 import java.util
+import java.util.concurrent.Semaphore
 import java.util.regex.Pattern
 import javafx.beans.Observable
 import javafx.event.EventHandler
@@ -30,6 +32,7 @@ import org.fxmisc.richtext.{CodeArea, LineNumberFactory, StyleSpans, StyleSpansB
 
 import scala.collection.JavaConversions._
 import scalafx.Includes._
+import scalafx.application.Platform
 
 
 object StyledCodeEditor {
@@ -41,7 +44,7 @@ object StyledCodeEditor {
   * <p>
   * This class derives from and extends the JavaKeywords demo of the CodeArea control.
   */
-class StyledCodeEditor extends CodeArea {
+class StyledCodeEditor(stylingSleepDuration: Duration = Duration.ofMillis(334)) extends CodeArea {
   private var syntaxPattern = Pattern.compile("")
   private var styles = Map[String, Style]()
   private var descriptorKeyCounter = 0
@@ -51,9 +54,10 @@ class StyledCodeEditor extends CodeArea {
 
   setParagraphGraphicFactory(LineNumberFactory.get(this))
 
-  textProperty().addListener((observable: Observable) => {
-    setStyleSpans(0, computeHighlighting(getText))
-  })
+
+  private val styleDaemon = new StyleDaemon(this, stylingSleepDuration) {
+    start()
+  }
 
 
   /**
@@ -205,4 +209,89 @@ class StyledCodeEditor extends CodeArea {
       }
     })
   }
+
+
+  private var stylingEnabled: Boolean = true
+
+
+  /**
+    * Stops the background thread employed for styling the editor
+    */
+  def stopStyling(): Unit = {
+    stylingEnabled = false
+  }
+
+
+  private class StyleDaemon(codeEditor: StyledCodeEditor, sleepDuration: Duration) extends Thread {
+    setDaemon(true)
+
+
+    override def run(): Unit = {
+      var text = ""
+      var latestStyledText = ""
+
+      val guiSemaphore = new Semaphore(0)
+
+
+      while (codeEditor.stylingEnabled) {
+        Platform.runLater {
+          text =
+            codeEditor.getText()
+
+          guiSemaphore.release()
+        }
+
+
+        guiSemaphore.acquire()
+
+
+        if (text != latestStyledText) {
+          val styleSpans =
+            computeHighlighting(text)
+
+          Platform.runLater {
+            try {
+              codeEditor.setStyleSpans(0, styleSpans)
+              latestStyledText = text
+            } catch {
+              case _: Exception =>
+              //Just do nothing
+            }
+
+            guiSemaphore.release()
+          }
+
+          guiSemaphore.acquire()
+        }
+
+
+        Thread.sleep(sleepDuration.toMillis)
+      }
+    }
+
+
+    private def computeHighlighting(text: String): StyleSpans[util.Collection[String]] = {
+      val spansBuilder = new StyleSpansBuilder[util.Collection[String]]
+
+      val matcher = syntaxPattern.matcher(text)
+      var latestMatchEndPosition = 0
+
+      while (matcher.find()) {
+        val styleKey =
+          styles
+            .keySet
+            .filter(key => matcher.group(key) != null)
+            .head
+
+        val styleClass = styles(styleKey).cssClass
+
+        spansBuilder.add(Seq(), matcher.start() - latestMatchEndPosition)
+        spansBuilder.add(Seq(styleClass), matcher.end() - matcher.start())
+        latestMatchEndPosition = matcher.end()
+      }
+      spansBuilder.add(Seq(), text.length() - latestMatchEndPosition)
+      spansBuilder.create()
+    }
+  }
+
 }
