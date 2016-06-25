@@ -88,51 +88,23 @@ class StyledCodeEditor(stylingSleepDuration: Duration = Duration.ofMillis(334)) 
     */
   def addTokens(cssClass: String, tokens: String*) {
     val tokensPattern =
-      String.join("|",
-        tokens
-          .map(token => s"\\b${Pattern.quote(token)}\\b")
-      )
+      tokens
+        .map(token => s"\\b${Pattern.quote(token)}\\b")
+        .mkString("|")
 
     addPattern(cssClass, tokensPattern)
   }
 
 
   private def updateSyntaxPattern(): Unit = {
-    val patternBuilder = new StringBuilder()
-
-    styles.foreach { case (key, style) =>
-      patternBuilder.append(s"(?<${key}>${style.pattern})|")
+    val patternComponents = styles.map { case (key, style) =>
+      s"(?<${key}>${style.pattern})"
     }
 
-    if (patternBuilder.nonEmpty) {
-      patternBuilder.deleteCharAt(patternBuilder.length - 1)
-    }
+    val patternString =
+      patternComponents.mkString("|")
 
-    syntaxPattern = Pattern.compile(patternBuilder.toString)
-  }
-
-
-  private def computeHighlighting(text: String): StyleSpans[util.Collection[String]] = {
-    val spansBuilder = new StyleSpansBuilder[util.Collection[String]]
-
-    val matcher = syntaxPattern.matcher(text)
-    var lastMatchEndPosition = 0
-
-    while (matcher.find()) {
-      val styleKey =
-        styles
-          .keySet
-          .filter(key => matcher.group(key) != null)
-          .head
-
-      val styleClass = styles(styleKey).cssClass
-
-      spansBuilder.add(Seq(), matcher.start() - lastMatchEndPosition)
-      spansBuilder.add(Seq(styleClass), matcher.end() - matcher.start())
-      lastMatchEndPosition = matcher.end()
-    }
-    spansBuilder.add(Seq(), text.length() - lastMatchEndPosition)
-    spansBuilder.create()
+    syntaxPattern = Pattern.compile(patternString)
   }
 
 
