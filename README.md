@@ -87,7 +87,7 @@ The very first open source application employing OmniEditor is [Chronos IDE](htt
 * OmniEditor is based on [RichTextFX](https://github.com/TomasMikula/RichTextFX), and was created starting from its brilliant "JavaKeywords" demo
 
 
-* OmniEditor also employs [Helios](https://github.com/giancosta86/Helios-core), an open source Scala library of shared utilities
+* OmniEditor also employs [Helios-fx](https://github.com/giancosta86/Helios-fx), an open source ScalaFX library of shared utilities
 
 * The UI icons are taken from the elegant [Kids Icons](http://www.iconarchive.com/show/kids-icons-icons-by-everaldo.1.html) set, by [Everaldo Coelho](http://www.everaldo.com/).
 
